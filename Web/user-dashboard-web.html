@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meus Chamados - Sistema de Chamados</title>
+    <link rel="stylesheet" href="style-web.css" />
+  </head>
+  <body class="user-theme">
+    <div class="web-container">
+      <!-- Sidebar -->
+      <aside class="sidebar user-sidebar">
+        <div class="sidebar-content">
+          <div class="nav-item active"><div class="nav-icon">☰</div></div>
+          <div class="nav-item" onclick="location.href='user-dashboard-web.html'">
+            <div class="nav-icon">🏠</div>
+          </div>
+          <div class="nav-item"><div class="nav-icon">🔍</div></div>
+          <div class="nav-item"><div class="nav-icon">👤</div></div>
+          <div class="nav-item"><div class="nav-icon">⚙️</div></div>
+          <div class="nav-item" onclick="logout()">
+            <div class="nav-icon">↗️</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="page-header">
+          <h1 class="page-title">Meus Chamados</h1>
+          <div class="user-info">Usuário Gabriel</div>
+        </header>
+
+        <!-- Filtros -->
+        <div class="filters-section">
+          <div class="filter-group">
+            <select class="filter-select" id="status-filter">
+              <option value="">Filtrar por status</option>
+              <option value="open">Aberto</option>
+              <option value="pendente">Pendente</option>
+              <option value="andamento">Em andamento</option>
+              <option value="resolvido">Resolvido</option>
+            </select>
+            <select class="filter-select" id="priority-filter">
+              <option value="">Filtrar por prioridade</option>
+              <option value="alta">Alta</option>
+              <option value="media">Média</option>
+              <option value="baixa">Baixa</option>
+            </select>
+            <input
+              type="text"
+              placeholder="🔍 Buscar chamados..."
+              class="search-input"
+              id="search-input"
+            />
+          </div>
+        </div>
+
+        <!-- Tabela de Chamados -->
+        <div class="tickets-table-container">
+          <table class="tickets-table">
+            <thead>
+              <tr>
+                <th>ID CHAMADO</th>
+                <th>DATA ABERTURA</th>
+                <th>ASSUNTO</th>
+                <th>STATUS</th>
+                <th>CATEGORIA</th>
+                <th>PRIORIDADE</th>
+                <th>DATA DE RESOLUÇÃO</th>
+                <th>RESPONSÁVEL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="ticket-row" onclick="goToTicketDetails(1234)">
+                <td class="ticket-id">1234</td>
+                <td>10/05/2025</td>
+                <td>Erro ao abrir Excel</td>
+                <td>
+                  <span class="status-badge status-progress">Em andamento</span>
+                </td>
+                <td>Software</td>
+                <td><span class="priority-high">Alta</span></td>
+                <td>-</td>
+                <td>João Pereira</td>
+              </tr>
+              <tr class="ticket-row" onclick="goToTicketDetails(2345)">
+                <td class="ticket-id">2345</td>
+                <td>05/05/2025</td>
+                <td>Impressora sem conexão</td>
+                <td>
+                  <span class="status-badge status-resolved">Resolvido</span>
+                </td>
+                <td>Hardware</td>
+                <td><span class="priority-medium">Média</span></td>
+                <td>08/05/2025</td>
+                <td>Larissa Nunes</td>
+              </tr>
+              <tr class="ticket-row" onclick="goToTicketDetails(3456)">
+                <td class="ticket-id">3456</td>
+                <td>12/05/2025</td>
+                <td>Solicitação de novo e-mail</td>
+                <td><span class="status-badge status-open">Aberto</span></td>
+                <td>E-mail</td>
+                <td><span class="priority-low">Baixa</span></td>
+                <td>-</td>
+                <td>Felipe Andrade</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Botão Novo Chamado -->
+        <button
+          class="btn-new-ticket"
+          onclick="location.href='new-ticket-web.html'"
+        >
+          + Criar Novo Chamado
+        </button>
+      </main>
+    </div>
+
+    <script src="script-web.js"></script>
+  </body>
+</html>
+
+
+
+
+manda pro chat: Onde eu coloco o script que vc fez inline, dentro do arquivo .js exatamente?
+
+Fiz alguns ajustes e acho que precisa de mais para ornar e funcionar super bem.
+
+Valida, por favor.
+
+A versão desktop será construida em cima destes arquivos, não ainda, não agora, ams a ideia é fazer 100% certinho a versão web e só reproduzir pra versão desktop.
+
+Uma dúvida, como podemos simular bem simulado a versão desktop, de forma que um arquivo seja baixado?
+
+pergunto isso, pois até onde sei, a versão desktop é um arquivo que vc baixa no computador e inmstala nele, certo?

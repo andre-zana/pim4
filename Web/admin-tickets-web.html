@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todos os Chamados - Sistema de Chamados</title>
+    <link rel="stylesheet" href="style-web.css" />
+  </head>
+  <body class="admin-theme">
+    <div class="web-container">
+      <!-- Sidebar -->
+      <aside class="sidebar admin-sidebar">
+        <div class="sidebar-content">
+          <div class="nav-item active"><div class="nav-icon">☰</div></div>
+          <div class="nav-item" onclick="location.href='admin-dashboard-web.html'">
+            <div class="nav-icon">🏠</div>
+          </div>
+          <div class="nav-item" onclick="location.href='#'"><div class="nav-icon">🔍</div></div>
+          <div class="nav-item" onclick="location.href='#'"><div class="nav-icon">👤</div></div>
+          <div class="nav-item" onclick="location.href='config-web.html'"><div class="nav-icon">⚙️</div></div>
+          <div class="nav-item" onclick="logout()">
+            <div class="nav-icon">↗️</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="page-header">
+          <div class="header-left">
+            <div class="app-icon">🔧</div>
+            <h1 class="page-title">Todos os Chamados</h1>
+          </div>
+          <div class="search-bar">
+            <input
+              type="text"
+              placeholder="Buscar chamados..."
+              class="search-input"
+            />
+            <button class="search-btn">🔍</button>
+          </div>
+          <div class="user-info">Suporte Guilherme</div>
+        </header>
+
+        <!-- Tabela Completa -->
+        <div class="tickets-table-container full-width">
+          <table class="tickets-table admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>TÍTULO</th>
+                <th>STATUS</th>
+                <th>PRIORIDADE</th>
+                <th>DATA CRIAÇÃO</th>
+                <th>USUÁRIO</th>
+                <th>DATA SUBMISSÃO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="ticket-row" onclick="goToTicketDetails(98)">
+                <td class="ticket-id">0098</td>
+                <td>Word não abre após atualização</td>
+                <td>
+                  <span class="status-badge status-progress">Em andamento</span>
+                </td>
+                <td><span class="priority-high">Alta</span></td>
+                <td>15/05/2025</td>
+                <td>Camila Mendes</td>
+                <td>16/05/2025</td>
+              </tr>
+              <tr class="ticket-row" onclick="goToTicketDetails(102)">
+                <td class="ticket-id">0102</td>
+                <td>Falha no login do sistema</td>
+                <td><span class="status-badge status-open">Aberto</span></td>
+                <td><span class="priority-high">Alta</span></td>
+                <td>14/05/2025</td>
+                <td>Rafael Silva</td>
+                <td>15/05/2025</td>
+              </tr>
+              <tr class="ticket-row" onclick="goToTicketDetails(106)">
+                <td class="ticket-id">0106</td>
+                <td>Impressora travando documentos</td>
+                <td>
+                  <span class="status-badge status-progress">Em andamento</span>
+                </td>
+                <td><span class="priority-medium">Média</span></td>
+                <td>13/05/2025</td>
+                <td>Larissa Costa</td>
+                <td>14/05/2025</td>
+              </tr>
+              <tr class="ticket-row" onclick="goToTicketDetails(111)">
+                <td class="ticket-id">0111</td>
+                <td>Solicitação de e-mail</td>
+                <td><span class="status-badge status-open">Aberto</span></td>
+                <td><span class="priority-low">Baixa</span></td>
+                <td>12/05/2025</td>
+                <td>João Cardoso</td>
+                <td>13/05/2025</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script src="script-web.js"></script>
+  </body>
+</html>

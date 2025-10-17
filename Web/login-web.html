@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Sistema de Chamados</title>
+    <link rel="stylesheet" href="style-web.css" />
+  </head>
+  <body class="login-page">
+    <div class="login-container">
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="login-form-container">
+          <div class="login-icon">👤</div>
+          <h1 class="login-title">Login</h1>
+
+          <form id="login-form" class="login-form">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" required />
+              <div class="error-message" id="email-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Senha</label>
+              <div class="password-group">
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  required
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  id="password-toggle"
+                >
+                  👁
+                </button>
+              </div>
+              <a href="#" class="forgot-password">Esqueceu a senha</a>
+              <div class="error-message" id="password-error"></div>
+            </div>
+
+            <button type="submit" class="btn-primary" id="login-btn">
+              Entrar
+            </button>
+          </form>
+
+          <div class="register-link">
+            Ainda não tem conta? <a href="register.html">Criar conta agora</a>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script-web.js"></script>
+  </body>
+</html>

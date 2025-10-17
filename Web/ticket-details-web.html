@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Chamado - Sistema de Chamados</title>
+    <link rel="stylesheet" href="style-web.css" />
+  </head>
+  <body class="user-theme">
+    <div class="web-container">
+      <!-- Sidebar -->
+      <aside class="sidebar user-sidebar">
+        <div class="sidebar-content">
+          <div class="nav-item"><div class="nav-icon">☰</div></div>
+          <div class="nav-item" onclick="goBack()">
+            <div class="nav-icon">🏠</div>
+          </div>
+          <div class="nav-item"><div class="nav-icon">🔍</div></div>
+          <div class="nav-item"><div class="nav-icon">👤</div></div>
+          <div class="nav-item"><div class="nav-icon">⚙️</div></div>
+          <div class="nav-item" onclick="logout()">
+            <div class="nav-icon">↗️</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="page-header">
+          <h1 class="page-title">Detalhes do Chamado</h1>
+          <div class="user-info">Usuário Gabriel</div>
+        </header>
+
+        <div class="ticket-details-container">
+          <div class="ticket-header">
+            <div class="ticket-id-large">ID 1234</div>
+            <div class="ticket-meta-grid">
+              <div class="meta-item">
+                <label>Status</label>
+                <span class="status-badge status-pending">Pendente</span>
+              </div>
+              <div class="meta-item">
+                <label>Prioridade</label>
+                <span class="priority-high">Alta</span>
+              </div>
+              <div class="meta-item">
+                <label>Solicitante</label>
+                <span>Gustavo Silva</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ticket-content">
+            <div class="description-section">
+              <h3>Descrição</h3>
+              <div class="description-text">
+                Não consigo abrir nenhum aplicativo do pacote Office, como Word
+                ou Excel. Já tentei reiniciar o computador, mas o problema
+                continua.
+              </div>
+            </div>
+
+            <div class="comments-section">
+              <div class="section-header">
+                <h3>Comentários</h3>
+                <button class="btn-secondary" onclick="addComment()">
+                  Adicionar comentário
+                </button>
+              </div>
+              <div class="comment-item">
+                <div class="comment-header">
+                  <span class="comment-author">Guilherme</span>
+                  <span class="comment-date">17 de maio de 2025, 10:15</span>
+                </div>
+                <div class="comment-text">
+                  Olá, Gabriel. Vamos verificar a questão e te daremos um
+                  retorno em breve.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script-web.js"></script>
+  </body>
+</html>

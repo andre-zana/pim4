@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configurações - Sistema de Chamados</title>
+    <link rel="stylesheet" href="style-web.css" />
+  </head>
+  <body class="user-theme">
+    <div class="web-container">
+      <!-- Sidebar -->
+      <aside class="sidebar user-sidebar">
+        <div class="sidebar-content">
+          <div class="nav-item"><div class="nav-icon">☰</div></div>
+          <div class="nav-item" onclick="location.href='user-dashboard-web.html'">
+            <div class="nav-icon">🏠</div>
+          </div>
+          <div class="nav-item"><div class="nav-icon">🔍</div></div>
+          <div class="nav-item"><div class="nav-icon">👤</div></div>
+          <div class="nav-item active"><div class="nav-icon">⚙️</div></div>
+          <div class="nav-item" onclick="logout()">
+            <div class="nav-icon">↗️</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="page-header">
+          <h1 class="page-title">Configurações</h1>
+          <div class="user-info">Usuário Gabriel</div>
+        </header>
+
+        <div class="settings-container">
+          <!-- Seção de Perfil -->
+          <div class="settings-card">
+            <h2 class="settings-card-title">Perfil do Usuário</h2>
+            <div class="user-profile-web">
+              <div class="user-avatar-large">👤</div>
+              <div class="user-details">
+                <div class="user-name-large" id="user-name">Gabriel Silva</div>
+                <div class="user-role">TI - Desenvolvedor</div>
+                <div class="user-email-display" id="user-email">
+                  gabriel.silva@empresa.com
+                </div>
+              </div>
+              <button class="btn-secondary" onclick="editProfile()">
+                Editar Perfil
+              </button>
+            </div>
+          </div>
+
+          <!-- Grid de Configurações -->
+          <div class="settings-grid">
+            <!-- Notificações -->
+            <div class="settings-card">
+              <h2 class="settings-card-title">Notificações</h2>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Push Notifications</div>
+                  <div class="setting-description">
+                    Receber alertas sobre atualizações
+                  </div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="push-notifications" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Notificações por E-mail</div>
+                  <div class="setting-description">
+                    Resumo diário por e-mail
+                  </div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="email-notifications" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Som de Notificação</div>
+                  <div class="setting-description">
+                    Reproduzir som ao receber
+                  </div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="sound-notifications" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Preferências de Chamados -->
+            <div class="settings-card">
+              <h2 class="settings-card-title">Preferências de Chamados</h2>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Prioridade Padrão</div>
+                  <div class="setting-description">Para novos chamados</div>
+                </div>
+                <select class="setting-select-web" id="default-priority">
+                  <option value="baixa">Baixa</option>
+                  <option value="media" selected>Média</option>
+                  <option value="alta">Alta</option>
+                </select>
+              </div>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Auto-categorização com IA</div>
+                  <div class="setting-description">
+                    Sugestão automática de categoria
+                  </div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="auto-categorization" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Salvar Rascunhos</div>
+                  <div class="setting-description">Salvamento automático</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="auto-save" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Aparência -->
+            <div class="settings-card">
+              <h2 class="settings-card-title">Aparência</h2>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Tema</div>
+                  <div class="setting-description">Aparência do sistema</div>
+                </div>
+                <select class="setting-select-web" id="app-theme">
+                  <option value="light" selected>Claro</option>
+                  <option value="dark">Escuro</option>
+                  <option value="auto">Automático</option>
+                </select>
+              </div>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Tamanho da Fonte</div>
+                  <div class="setting-description">Ajustar legibilidade</div>
+                </div>
+                <select class="setting-select-web" id="font-size">
+                  <option value="small">Pequeno</option>
+                  <option value="medium" selected>Médio</option>
+                  <option value="large">Grande</option>
+                </select>
+              </div>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Densidade da Interface</div>
+                  <div class="setting-description">
+                    Espaçamento dos elementos
+                  </div>
+                </div>
+                <select class="setting-select-web" id="density">
+                  <option value="compact">Compacto</option>
+                  <option value="comfortable" selected>Confortável</option>
+                  <option value="spacious">Espaçoso</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Privacidade e Segurança -->
+            <div class="settings-card">
+              <h2 class="settings-card-title">Privacidade e Segurança</h2>
+
+              <div
+                class="settings-item-web clickable"
+                onclick="showPrivacyPolicy()"
+              >
+                <div class="setting-text">
+                  <div class="setting-label">Política de Privacidade</div>
+                  <div class="setting-description">
+                    Como tratamos seus dados
+                  </div>
+                </div>
+                <div class="setting-arrow">›</div>
+              </div>
+
+              <div
+                class="settings-item-web clickable"
+                onclick="showDataUsage()"
+              >
+                <div class="setting-text">
+                  <div class="setting-label">Uso de Dados (LGPD)</div>
+                  <div class="setting-description">Gerenciar consentimento</div>
+                </div>
+                <div class="setting-arrow">›</div>
+              </div>
+
+              <div
+                class="settings-item-web clickable"
+                onclick="changePassword()"
+              >
+                <div class="setting-text">
+                  <div class="setting-label">Alterar Senha</div>
+                  <div class="setting-description">
+                    Modificar credenciais de acesso
+                  </div>
+                </div>
+                <div class="setting-arrow">›</div>
+              </div>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Autenticação em Dois Fatores</div>
+                  <div class="setting-description">Segurança adicional</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="two-factor-auth" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Modo Offline -->
+            <div class="settings-card">
+              <h2 class="settings-card-title">Recursos Avançados</h2>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Modo Offline</div>
+                  <div class="setting-description">Trabalhar sem conexão</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="offline-mode" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Atalhos de Teclado</div>
+                  <div class="setting-description">Navegação rápida</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="keyboard-shortcuts" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Suporte -->
+            <div class="settings-card">
+              <h2 class="settings-card-title">Suporte e Ajuda</h2>
+
+              <div class="settings-item-web clickable" onclick="showHelp()">
+                <div class="setting-text">
+                  <div class="setting-label">Central de Ajuda</div>
+                  <div class="setting-description">FAQ e tutoriais</div>
+                </div>
+                <div class="setting-arrow">›</div>
+              </div>
+
+              <div
+                class="settings-item-web clickable"
+                onclick="contactSupport()"
+              >
+                <div class="setting-text">
+                  <div class="setting-label">Contatar Suporte</div>
+                  <div class="setting-description">Falar com equipe de TI</div>
+                </div>
+                <div class="setting-arrow">›</div>
+              </div>
+
+              <div class="settings-item-web clickable" onclick="sendFeedback()">
+                <div class="setting-text">
+                  <div class="setting-label">Enviar Feedback</div>
+                  <div class="setting-description">Sugerir melhorias</div>
+                </div>
+                <div class="setting-arrow">›</div>
+              </div>
+
+              <div class="settings-item-web">
+                <div class="setting-text">
+                  <div class="setting-label">Versão do Sistema</div>
+                  <div class="setting-description">v2.1.0 (Build 156)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão de Logout -->
+          <div class="settings-card danger-zone">
+            <h2 class="settings-card-title">Zona de Perigo</h2>
+            <div class="danger-content">
+              <div class="danger-text">
+                <div class="setting-label">Sair da Conta</div>
+                <div class="setting-description">
+                  Você será desconectado do sistema
+                </div>
+              </div>
+              <button class="btn-danger" onclick="confirmLogout()">
+                Sair da Conta
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script-web.js"></script>
+  </body>
+</html>

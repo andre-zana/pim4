@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novo Chamado - Sistema de Chamados</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="mobile-container">
+      <!-- Status Bar -->
+      <div class="status-bar">9:41</div>
+
+      <!-- Content -->
+      <div class="content">
+        <div class="header-with-back">
+          <button class="back-btn" onclick="goBack()">← Voltar</button>
+          <h1 class="page-title">Novo chamado</h1>
+        </div>
+
+        <form id="new-ticket-form">
+          <div class="form-group">
+            <label for="ticket-title">Título</label>
+            <input
+              type="text"
+              id="ticket-title"
+              class="form-control"
+              required
+            />
+            <div class="error-message" id="title-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="ticket-category">Categoria</label>
+            <select id="ticket-category" class="form-control" required>
+              <option value="">Selecione uma categoria</option>
+              <option value="hardware">Hardware</option>
+              <option value="software">Software</option>
+              <option value="rede">Rede</option>
+              <option value="email">E-mail</option>
+              <option value="outros">Outros</option>
+            </select>
+            <div class="error-message" id="category-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="ticket-priority">Prioridade</label>
+            <select id="ticket-priority" class="form-control" required>
+              <option value="">Selecione a prioridade</option>
+              <option value="baixa">Baixa</option>
+              <option value="media">Média</option>
+              <option value="alta">Alta</option>
+              <option value="critica">Crítica</option>
+            </select>
+            <div class="error-message" id="priority-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="ticket-description">Descrição</label>
+            <textarea
+              id="ticket-description"
+              class="textarea"
+              required
+              placeholder="Descreva detalhadamente o problema..."
+            ></textarea>
+            <div class="error-message" id="description-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="ticket-attachment">Anexo</label>
+            <input
+              type="file"
+              id="ticket-attachment"
+              class="file-input"
+              multiple
+              accept="image/*,.pdf,.doc,.docx,.txt"
+            />
+            <small class="file-hint"
+              >Formatos aceitos: imagens, PDF, DOC, TXT (máx. 5MB por
+              arquivo)</small
+            >
+          </div>
+
+          <div class="info-box">
+            <div class="info-icon">i</div>
+            <div class="info-text">
+              Experimente preencher com máximo de detalhes para ajudar a equipe
+              de suporte a entender e resolver sua solicitação mais rapidamente.
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="btn-primary mt-20"
+            id="create-ticket-btn"
+          >
+            Criar Chamado
+          </button>
+        </form>
+      </div>
+
+      <!-- Bottom Navigation -->
+      <nav class="bottom-nav">
+        <a href="dashboard.html" class="nav-item">
+          <div class="nav-icon">🏠</div>
+          <div class="nav-label">Início</div>
+        </a>
+        <a href="config.html" class="nav-item">
+          <div class="nav-icon">⚙️</div>
+          <div class="nav-label">Config</div>
+        </a>
+        <a href="login.html" class="nav-item">
+          <div class="nav-icon">↗️</div>
+          <div class="nav-label">Sair</div>
+        </a>
+      </nav>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

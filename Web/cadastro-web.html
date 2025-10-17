@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro - Sistema de Chamados</title>
+    <link rel="stylesheet" href="style-web.css" />
+  </head>
+  <body class="login-page">
+    <div class="login-container">
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="register-form-container">
+          <h1 class="register-title">Cadastro</h1>
+
+          <form id="register-form" class="register-form">
+            <div class="form-group">
+              <label for="full-name">Nome completo</label>
+              <input type="text" id="full-name" class="form-control" required />
+              <div class="error-message" id="name-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="corp-email">E-mail</label>
+              <input
+                type="email"
+                id="corp-email"
+                class="form-control"
+                required
+              />
+              <div class="error-message" id="email-error"></div>
+            </div>
+
+            <!-- <div class="form-group">
+              <label for="department">Setor ou departamento</label>
+              <select id="department" class="form-control" required>
+                <option value="">Selecione...</option>
+                <option value="ti">TI</option>
+                <option value="rh">RH</option>
+                <option value="financeiro">Financeiro</option>
+                <option value="vendas">Vendas</option>
+                <option value="marketing">Marketing</option>
+              </select>
+              <div class="error-message" id="department-error"></div>
+            </div> -->
+
+            <div class="form-group">
+              <label for="reg-password">Senha</label>
+              <input
+                type="password"
+                id="reg-password"
+                class="form-control"
+                required
+              />
+              <div class="error-message" id="password-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="confirm-password">Repetir a senha</label>
+              <input
+                type="password"
+                id="confirm-password"
+                class="form-control"
+                required
+              />
+              <div class="error-message" id="confirm-password-error"></div>
+            </div>
+
+            <button type="submit" class="btn-primary" id="register-btn">
+              Cadastrar-se
+            </button>
+          </form>
+
+          <div class="register-link">
+            Já tem uma conta? <a href="login-web.html">Fazer login</a>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script-web.js"></script>
+  </body>
+</html>
