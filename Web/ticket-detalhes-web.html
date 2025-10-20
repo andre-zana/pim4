@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Detalhes do Chamado — Web</title>
+    <link rel="stylesheet" href="style-web.css" />
+  </head>
+  <body>
+    <div class="app" id="ticket-view">
+      <!-- Topbar: marca (logo centralizada) -->
+      <div class="topbar">
+        <div class="brand"><img src="logo.png" alt="H2O" /></div>
+      </div>
+
+      <!-- Header: navegação principal -->
+      <header class="header">
+        <div class="wrap">
+          <nav>
+            <a href="user-dashboard-web.html">Início</a>
+            <a href="novo-ticket-web.html">Novo</a>
+            <a href="config-web.html">Config</a>
+            <a href="#" id="nav-logout">Sair</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Conteúdo: resumo, descrição, atividades -->
+      <main class="main">
+        <h2 class="page-title text-center">
+          Chamado <span id="t-id">#0000</span>
+        </h2>
+
+        <!-- Resumo (metadados) + Descrição -->
+        <div class="grid grid-2">
+          <section class="card">
+            <!-- Subtítulo padronizado via utilitários -->
+            <h3 class="page-title fs-20 mb-12">Resumo</h3>
+            <p><strong>Título:</strong> <span id="t-title">—</span></p>
+            <p><strong>Status:</strong> <span id="t-status"></span></p>
+            <p><strong>Prioridade:</strong> <span id="t-priority"></span></p>
+            <p><strong>Categoria:</strong> <span id="t-category">—</span></p>
+            <p><strong>Criado em:</strong> <span id="t-created">—</span></p>
+
+            <div class="form-group mt-16">
+              <label for="change-status">Alterar status</label>
+              <select id="change-status">
+                <option value="">Selecionar...</option>
+                <option value="aberto">Aberto</option>
+                <option value="pendente">Pendente</option>
+                <option value="andamento">Em andamento</option>
+                <option value="resolvido">Resolvido</option>
+              </select>
+            </div>
+          </section>
+
+          <section class="card">
+            <h3 class="page-title fs-20 mb-12">Descrição</h3>
+            <p id="t-desc" class="help">—</p>
+          </section>
+        </div>
+
+        <!-- Atividades (comentários) -->
+        <section class="card mt-16">
+          <h3 class="page-title fs-20 mb-12">Atividades</h3>
+          <ol id="comments"></ol>
+
+          <!-- Novo comentário (simulação; API preparada no JS) -->
+          <form id="comment-form" class="mt-16">
+            <div class="form-group">
+              <label for="comment-text">Novo comentário</label>
+              <textarea
+                id="comment-text"
+                rows="4"
+                maxlength="1000"
+                placeholder="Descreva o que foi feito..."
+                required
+              ></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">
+              Adicionar comentário
+            </button>
+          </form>
+        </section>
+      </main>
+
+      <footer class="footer">H2O • v1.0.0</footer>
+    </div>
+    <script src="script-web.js"></script>
+  </body>
+</html>

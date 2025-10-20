@@ -3,281 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Configurações - Sistema de Chamados</title>
+    <title>Configurações - Sistema</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="mobile-container">
-      <!-- Status Bar -->
+    <main class="mobile-container" role="main">
       <div class="status-bar">9:41</div>
 
-      <!-- Content -->
-      <div class="content">
-        <div class="header-with-back">
-          <button class="back-btn" onclick="goBack()">← Voltar</button>
-          <h1 class="page-title">Configurações</h1>
-        </div>
-
-        <!-- User Profile Section -->
-        <div class="settings-section">
-          <div class="user-profile">
-            <div class="user-avatar">👤</div>
-            <div class="user-info">
-              <div class="user-name" id="user-name">Gabriel Silva</div>
-              <div class="user-department" id="user-department">
-                TI - Desenvolvedor
-              </div>
-              <div class="user-email" id="user-email">
-                gabriel.silva@empresa.com
-              </div>
-            </div>
-            <button class="edit-profile-btn" onclick="toggleEditProfile()">
-              Editar
-            </button>
-          </div>
-        </div>
-
-        <!-- Notifications Section -->
-        <div class="settings-section">
-          <h2 class="section-title">Notificações</h2>
-          <div class="settings-item">
-            <div class="setting-info">
-              <div class="setting-label">Push Notifications</div>
-              <div class="setting-description">
-                Receber notificações sobre atualizações de chamados
-              </div>
-            </div>
-            <label class="toggle-switch">
-              <input type="checkbox" id="push-notifications" checked />
-              <span class="slider"></span>
-            </label>
-          </div>
-          <div class="settings-item">
-            <div class="setting-info">
-              <div class="setting-label">Notificações por E-mail</div>
-              <div class="setting-description">
-                Receber resumo diário por e-mail
-              </div>
-            </div>
-            <label class="toggle-switch">
-              <input type="checkbox" id="email-notifications" />
-              <span class="slider"></span>
-            </label>
-          </div>
-          <div class="settings-item">
-            <div class="setting-info">
-              <div class="setting-label">Som de Notificação</div>
-              <div class="setting-description">
-                Reproduzir som ao receber notificação
-              </div>
-            </div>
-            <label class="toggle-switch">
-              <input type="checkbox" id="sound-notifications" checked />
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Ticket Preferences Section -->
-        <div class="settings-section">
-          <h2 class="section-title">Preferências de Chamados</h2>
-          <div class="settings-item">
-            <div class="setting-info">
-              <div class="setting-label">Prioridade Padrão</div>
-              <div class="setting-description">
-                Prioridade automática para novos chamados
-              </div>
-            </div>
-            <select class="setting-select" id="default-priority">
-              <option value="baixa">Baixa</option>
-              <option value="media" selected>Média</option>
-              <option value="alta">Alta</option>
-            </select>
-          </div>
-          <div class="settings-item">
-            <div class="setting-info">
-              <div class="setting-label">Auto-categorização</div>
-              <div class="setting-description">
-                Usar IA para sugerir categoria automaticamente
-              </div>
-            </div>
-            <label class="toggle-switch">
-              <input type="checkbox" id="auto-categorization" checked />
-              <span class="slider"></span>
-            </label>
-          </div>
-          <div class="settings-item">
-            <div class="setting-info">
-              <div class="setting-label">Salvar Rascunhos</div>
-              <div class="setting-description">
-                Salvar automaticamente chamados em progresso
-              </div>
-            </div>
-            <label class="toggle-switch">
-              <input type="checkbox" id="auto-save" checked />
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Privacy & Security Section -->
-        <div class="settings-section">
-          <h2 class="section-title">Privacidade e Segurança</h2>
-          <div class="settings-item clickable" onclick="showPrivacyPolicy()">
-            <div class="setting-info">
-              <div class="setting-label">Política de Privacidade</div>
-              <div class="setting-description">
-                Como seus dados são coletados e utilizados
-              </div>
-            </div>
-            <div class="setting-arrow">›</div>
-          </div>
-          <div class="settings-item clickable" onclick="showDataUsage()">
-            <div class="setting-info">
-              <div class="setting-label">Uso de Dados (LGPD)</div>
-              <div class="setting-description">
-                Gerenciar consentimento de uso de dados
-              </div>
-            </div>
-            <div class="setting-arrow">›</div>
-          </div>
-          <div class="settings-item clickable" onclick="changePassword()">
-            <div class="setting-info">
-              <div class="setting-label">Alterar Senha</div>
-              <div class="setting-description">
-                Modificar sua senha de acesso
-              </div>
-            </div>
-            <div class="setting-arrow">›</div>
-          </div>
-          <div class="settings-item">
-            <div class="setting-info">
-              <div class="setting-label">Autenticação Biométrica</div>
-              <div class="setting-description">
-                Usar impressão digital ou Face ID
-              </div>
-            </div>
-            <label class="toggle-switch">
-              <input type="checkbox" id="biometric-auth" />
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-
-        <!-- App Preferences Section -->
-        <div class="settings-section">
-          <h2 class="section-title">Preferências do App</h2>
-          <div class="settings-item">
-            <div class="setting-info">
-              <div class="setting-label">Tema</div>
-              <div class="setting-description">Aparência do aplicativo</div>
-            </div>
-            <select class="setting-select" id="app-theme">
-              <option value="light" selected>Claro</option>
-              <option value="dark">Escuro</option>
-              <option value="auto">Automático</option>
-            </select>
-          </div>
-          <div class="settings-item">
-            <div class="setting-info">
-              <div class="setting-label">Tamanho da Fonte</div>
-              <div class="setting-description">Ajustar tamanho do texto</div>
-            </div>
-            <select class="setting-select" id="font-size">
-              <option value="small">Pequeno</option>
-              <option value="medium" selected>Médio</option>
-              <option value="large">Grande</option>
-            </select>
-          </div>
-          <div class="settings-item">
-            <div class="setting-info">
-              <div class="setting-label">Modo Offline</div>
-              <div class="setting-description">
-                Permitir criação de chamados offline
-              </div>
-            </div>
-            <label class="toggle-switch">
-              <input type="checkbox" id="offline-mode" checked />
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Support Section -->
-        <div class="settings-section">
-          <h2 class="section-title">Suporte</h2>
-          <div class="settings-item clickable" onclick="showHelp()">
-            <div class="setting-info">
-              <div class="setting-label">Central de Ajuda</div>
-              <div class="setting-description">FAQ e tutoriais</div>
-            </div>
-            <div class="setting-arrow">›</div>
-          </div>
-          <div class="settings-item clickable" onclick="contactSupport()">
-            <div class="setting-info">
-              <div class="setting-label">Contatar Suporte</div>
-              <div class="setting-description">
-                Falar com nossa equipe de TI
-              </div>
-            </div>
-            <div class="setting-arrow">›</div>
-          </div>
-          <div class="settings-item clickable" onclick="sendFeedback()">
-            <div class="setting-info">
-              <div class="setting-label">Enviar Feedback</div>
-              <div class="setting-description">
-                Sugerir melhorias para o sistema
-              </div>
-            </div>
-            <div class="setting-arrow">›</div>
-          </div>
-        </div>
-
-        <!-- About Section -->
-        <div class="settings-section">
-          <h2 class="section-title">Sobre</h2>
-          <div class="settings-item">
-            <div class="setting-info">
-              <div class="setting-label">Versão do App</div>
-              <div class="setting-description">v2.1.0 (Build 156)</div>
-            </div>
-          </div>
-          <div class="settings-item clickable" onclick="showChangelog()">
-            <div class="setting-info">
-              <div class="setting-label">Novidades</div>
-              <div class="setting-description">
-                O que há de novo nesta versão
-              </div>
-            </div>
-            <div class="setting-arrow">›</div>
-          </div>
-        </div>
-
-        <!-- Logout Section -->
-        <div class="settings-section">
-          <button class="logout-btn" onclick="confirmLogout()">
-            Sair da Conta
-          </button>
+      <div class="brand-header">
+        <div class="brand-card">
+          <img src="logo.png" alt="H2O Purificadores" class="brand-logo" />
         </div>
       </div>
 
-      <!-- Bottom Navigation -->
-      <nav class="bottom-nav">
-        <a href="dashboard.html" class="nav-item">
-          <div class="nav-icon">🏠</div>
-          <div class="nav-label">Início</div>
-        </a>
-        <a href="config.html" class="nav-item active">
-          <div class="nav-icon">⚙️</div>
-          <div class="nav-label">Config</div>
-        </a>
-        <a href="login.html" class="nav-item">
-          <div class="nav-icon">↗️</div>
-          <div class="nav-label">Sair</div>
-        </a>
-      </nav>
-    </div>
+      <header class="page-header">
+        <button class="btn-back" onclick="goBack()">← Voltar</button>
+        <h1 class="page-title">Configurações</h1>
+      </header>
 
+      <section class="content-section settings">
+        <div class="form-group">
+          <label for="theme-select">Tema do aplicativo</label>
+          <select id="theme-select" class="form-control">
+            <option value="system">Automático (padrão)</option>
+            <option value="light">Claro</option>
+            <option value="dark">Escuro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="switch">
+            <input type="checkbox" id="notifications-toggle" checked />
+            <span class="slider"></span>
+          </label>
+          Receber notificações
+        </div>
+
+        <div class="form-group">
+          <label class="switch">
+            <input type="checkbox" id="sound-toggle" />
+            <span class="slider"></span>
+          </label>
+          Som de notificação
+        </div>
+
+        <hr
+          style="margin: 12px 0; border: none; border-top: 1px solid #e2e8f0"
+        />
+
+        <button class="btn-danger" id="logout-btn">Sair da conta</button>
+        <p class="muted" style="margin-top: 8px">Versão 1.0.0</p>
+      </section>
+
+      <nav class="bottom-nav" aria-label="Navegação">
+        <a href="dashboard.html" class="nav-item"
+          ><div class="nav-icon">🏠</div>
+          <div class="nav-label">Início</div></a
+        >
+        <a href="novo-ticket.html" class="nav-item"
+          ><div class="nav-icon">➕</div>
+          <div class="nav-label">Novo</div></a
+        >
+        <a href="config.html" class="nav-item active" aria-current="page"
+          ><div class="nav-icon">⚙️</div>
+          <div class="nav-label">Config</div></a
+        >
+        <a href="#" id="nav-logout" class="nav-item"
+          ><div class="nav-icon">🚪</div>
+          <div class="nav-label">Sair</div></a
+        >
+      </nav>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

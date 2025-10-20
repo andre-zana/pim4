@@ -3,119 +3,93 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Novo Chamado - Sistema de Chamados</title>
+    <title>Novo Chamado - Sistema</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="mobile-container">
-      <!-- Status Bar -->
+    <main class="mobile-container" role="main">
       <div class="status-bar">9:41</div>
 
-      <!-- Content -->
-      <div class="content">
-        <div class="header-with-back">
-          <button class="back-btn" onclick="goBack()">← Voltar</button>
-          <h1 class="page-title">Novo chamado</h1>
+      <div class="brand-header">
+        <div class="brand-card">
+          <img src="logo.png" alt="H2O Purificadores" class="brand-logo" />
         </div>
+      </div>
 
-        <form id="new-ticket-form">
+      <header class="page-header">
+        <button class="btn-back" onclick="goBack()">← Voltar</button>
+        <h1 class="page-title">Abrir novo chamado</h1>
+      </header>
+
+      <section class="content-section">
+        <form id="new-ticket-form" novalidate>
           <div class="form-group">
-            <label for="ticket-title">Título</label>
+            <label for="ticket-title">Título do chamado</label>
             <input
-              type="text"
               id="ticket-title"
               class="form-control"
+              placeholder="Ex.: Computador não liga"
+              maxlength="120"
               required
             />
-            <div class="error-message" id="title-error"></div>
           </div>
-
           <div class="form-group">
             <label for="ticket-category">Categoria</label>
             <select id="ticket-category" class="form-control" required>
-              <option value="">Selecione uma categoria</option>
+              <option value="" selected>Selecione...</option>
               <option value="hardware">Hardware</option>
               <option value="software">Software</option>
               <option value="rede">Rede</option>
-              <option value="email">E-mail</option>
+              <option value="acesso">Acesso/Senha</option>
               <option value="outros">Outros</option>
             </select>
-            <div class="error-message" id="category-error"></div>
           </div>
-
           <div class="form-group">
             <label for="ticket-priority">Prioridade</label>
             <select id="ticket-priority" class="form-control" required>
-              <option value="">Selecione a prioridade</option>
-              <option value="baixa">Baixa</option>
-              <option value="media">Média</option>
+              <option value="" selected>Selecione...</option>
               <option value="alta">Alta</option>
-              <option value="critica">Crítica</option>
+              <option value="media">Média</option>
+              <option value="baixa">Baixa</option>
             </select>
-            <div class="error-message" id="priority-error"></div>
           </div>
-
           <div class="form-group">
             <label for="ticket-description">Descrição</label>
             <textarea
               id="ticket-description"
-              class="textarea"
+              class="form-control"
+              rows="5"
+              maxlength="1000"
+              placeholder="Descreva o problema com detalhes..."
               required
-              placeholder="Descreva detalhadamente o problema..."
             ></textarea>
-            <div class="error-message" id="description-error"></div>
+            <small class="muted">0 / 1000</small>
           </div>
-
-          <div class="form-group">
-            <label for="ticket-attachment">Anexo</label>
-            <input
-              type="file"
-              id="ticket-attachment"
-              class="file-input"
-              multiple
-              accept="image/*,.pdf,.doc,.docx,.txt"
-            />
-            <small class="file-hint"
-              >Formatos aceitos: imagens, PDF, DOC, TXT (máx. 5MB por
-              arquivo)</small
-            >
-          </div>
-
-          <div class="info-box">
-            <div class="info-icon">i</div>
-            <div class="info-text">
-              Experimente preencher com máximo de detalhes para ajudar a equipe
-              de suporte a entender e resolver sua solicitação mais rapidamente.
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            class="btn-primary mt-20"
-            id="create-ticket-btn"
-          >
-            Criar Chamado
+          <button type="submit" class="btn-primary" id="create-ticket-btn">
+            Enviar chamado
           </button>
         </form>
-      </div>
+      </section>
 
-      <!-- Bottom Navigation -->
-      <nav class="bottom-nav">
-        <a href="dashboard.html" class="nav-item">
-          <div class="nav-icon">🏠</div>
-          <div class="nav-label">Início</div>
-        </a>
-        <a href="config.html" class="nav-item">
-          <div class="nav-icon">⚙️</div>
-          <div class="nav-label">Config</div>
-        </a>
-        <a href="login.html" class="nav-item">
-          <div class="nav-icon">↗️</div>
-          <div class="nav-label">Sair</div>
-        </a>
+      <nav class="bottom-nav" aria-label="Navegação">
+        <a href="dashboard.html" class="nav-item"
+          ><div class="nav-icon">🏠</div>
+          <div class="nav-label">Início</div></a
+        >
+        <a href="novo-ticket.html" class="nav-item active" aria-current="page"
+          ><div class="nav-icon">➕</div>
+          <div class="nav-label">Novo</div></a
+        >
+        <a href="config.html" class="nav-item"
+          ><div class="nav-icon">⚙️</div>
+          <div class="nav-label">Config</div></a
+        >
+        <a href="#" id="nav-logout" class="nav-item"
+          ><div class="nav-icon">🚪</div>
+          <div class="nav-label">Sair</div></a
+        >
       </nav>
-    </div>
-
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,108 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todos os Chamados - Sistema de Chamados</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin — Chamados</title>
     <link rel="stylesheet" href="style-web.css" />
   </head>
-  <body class="admin-theme">
-    <div class="web-container">
-      <!-- Sidebar -->
-      <aside class="sidebar admin-sidebar">
-        <div class="sidebar-content">
-          <div class="nav-item active"><div class="nav-icon">☰</div></div>
-          <div class="nav-item" onclick="location.href='admin-dashboard-web.html'">
-            <div class="nav-icon">🏠</div>
-          </div>
-          <div class="nav-item" onclick="location.href='#'"><div class="nav-icon">🔍</div></div>
-          <div class="nav-item" onclick="location.href='#'"><div class="nav-icon">👤</div></div>
-          <div class="nav-item" onclick="location.href='config-web.html'"><div class="nav-icon">⚙️</div></div>
-          <div class="nav-item" onclick="logout()">
-            <div class="nav-icon">↗️</div>
-          </div>
+  <body>
+    <div class="app">
+      <!-- Topbar: marca (logo centralizada) -->
+      <div class="topbar">
+        <div class="brand"><img src="logo.png" alt="H2O" /></div>
+      </div>
+
+      <!-- Header: navegação do módulo Admin -->
+      <header class="header">
+        <div class="wrap">
+          <nav>
+            <a href="admin-dashboard-web.html">Início</a>
+            <a class="active" href="admin-tickets-web.html">Chamados</a>
+            <a href="config-web.html">Config</a>
+            <a href="#" id="nav-logout">Sair</a>
+          </nav>
         </div>
-      </aside>
+      </header>
 
-      <!-- Main Content -->
-      <main class="main-content">
-        <header class="page-header">
-          <div class="header-left">
-            <div class="app-icon">🔧</div>
-            <h1 class="page-title">Todos os Chamados</h1>
-          </div>
-          <div class="search-bar">
-            <input
-              type="text"
-              placeholder="Buscar chamados..."
-              class="search-input"
-            />
-            <button class="search-btn">🔍</button>
-          </div>
-          <div class="user-info">Suporte Guilherme</div>
-        </header>
+      <!-- Conteúdo: filtros + tabela completa de chamados -->
+      <main class="main">
+        <h2 class="page-title text-center">Chamados</h2>
 
-        <!-- Tabela Completa -->
-        <div class="tickets-table-container full-width">
-          <table class="tickets-table admin-table">
+        <section class="card">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Status</label>
+              <select id="flt-status-admin">
+                <option value="">Todos</option>
+                <option value="aberto">Aberto</option>
+                <option value="pendente">Pendente</option>
+                <option value="andamento">Em andamento</option>
+                <option value="resolvido">Resolvido</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Prioridade</label>
+              <select id="flt-prio-admin">
+                <option value="">Todas</option>
+                <option value="alta">Alta</option>
+                <option value="media">Média</option>
+                <option value="baixa">Baixa</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section class="card mt-16">
+          <table class="table">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>TÍTULO</th>
-                <th>STATUS</th>
-                <th>PRIORIDADE</th>
-                <th>DATA CRIAÇÃO</th>
-                <th>USUÁRIO</th>
-                <th>DATA SUBMISSÃO</th>
+                <th>#</th>
+                <th>Título</th>
+                <th>Status</th>
+                <th>Prioridade</th>
+                <th>Categoria</th>
+                <th></th>
               </tr>
             </thead>
-            <tbody>
-              <tr class="ticket-row" onclick="goToTicketDetails(98)">
-                <td class="ticket-id">0098</td>
-                <td>Word não abre após atualização</td>
-                <td>
-                  <span class="status-badge status-progress">Em andamento</span>
-                </td>
-                <td><span class="priority-high">Alta</span></td>
-                <td>15/05/2025</td>
-                <td>Camila Mendes</td>
-                <td>16/05/2025</td>
-              </tr>
-              <tr class="ticket-row" onclick="goToTicketDetails(102)">
-                <td class="ticket-id">0102</td>
-                <td>Falha no login do sistema</td>
-                <td><span class="status-badge status-open">Aberto</span></td>
-                <td><span class="priority-high">Alta</span></td>
-                <td>14/05/2025</td>
-                <td>Rafael Silva</td>
-                <td>15/05/2025</td>
-              </tr>
-              <tr class="ticket-row" onclick="goToTicketDetails(106)">
-                <td class="ticket-id">0106</td>
-                <td>Impressora travando documentos</td>
-                <td>
-                  <span class="status-badge status-progress">Em andamento</span>
-                </td>
-                <td><span class="priority-medium">Média</span></td>
-                <td>13/05/2025</td>
-                <td>Larissa Costa</td>
-                <td>14/05/2025</td>
-              </tr>
-              <tr class="ticket-row" onclick="goToTicketDetails(111)">
-                <td class="ticket-id">0111</td>
-                <td>Solicitação de e-mail</td>
-                <td><span class="status-badge status-open">Aberto</span></td>
-                <td><span class="priority-low">Baixa</span></td>
-                <td>12/05/2025</td>
-                <td>João Cardoso</td>
-                <td>13/05/2025</td>
-              </tr>
-            </tbody>
+            <tbody id="tickets-body-admin"></tbody>
           </table>
-        </div>
+        </section>
       </main>
-    </div>
 
+      <footer class="footer">H2O • v1.0.0</footer>
+    </div>
     <script src="script-web.js"></script>
   </body>
 </html>

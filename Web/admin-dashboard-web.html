@@ -1,187 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Painel do Administrador - Sistema de Chamados</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin — Dashboard</title>
     <link rel="stylesheet" href="style-web.css" />
   </head>
-  <body class="admin-theme">
-    <div class="web-container">
-      <!-- Sidebar -->
-      <aside class="sidebar admin-sidebar">
-        <div class="sidebar-content">
-          <div class="nav-item active"><div class="nav-icon">☰</div></div>
-          <div class="nav-item" onclick="location.href='admin-dashboard-web.html'">
-            <div class="nav-icon">🏠</div>
-          </div>
-          <div class="nav-item" onclick="location.href='#'"><div class="nav-icon">🔍</div></div>
-          <div class="nav-item" onclick="location.href='#'"><div class="nav-icon">👤</div></div>
-          <div class="nav-item" onclick="location.href='config-web.html'"><div class="nav-icon">⚙️</div></div>
-          <div class="nav-item" onclick="logout()">
-            <div class="nav-icon">↗️</div>
-          </div>
+  <body>
+    <div class="app">
+      <!-- Topbar: marca (logo centralizada) -->
+      <div class="topbar">
+        <div class="brand"><img src="logo.png" alt="H2O" /></div>
+      </div>
+
+      <!-- Header: navegação do módulo Admin -->
+      <header class="header">
+        <div class="wrap">
+          <nav>
+            <a class="active" href="admin-dashboard-web.html">Início</a>
+            <a href="admin-tickets-web.html">Chamados</a>
+            <a href="config-web.html">Config</a>
+            <a href="#" id="nav-logout">Sair</a>
+          </nav>
         </div>
-      </aside>
+      </header>
 
-      <!-- Main Content -->
-      <main class="main-content">
-        <header class="page-header">
-          <h1 class="page-title">Painel do Administrador</h1>
-          <div class="user-info">Suporte Guilherme</div>
-        </header>
+      <!-- Conteúdo: KPIs + tabela geral -->
+      <main class="main">
+        <h2 class="page-title text-center">Visão geral</h2>
 
-        <!-- Cards de Estatísticas -->
-        <div class="dashboard-stats">
-          <div class="stat-card">
-            <div class="stat-icon">✅</div>
-            <div class="stat-number">124</div>
-            <div class="stat-label">Chamados resolvidos</div>
+        <!-- Indicadores principais (preenchidos no JS) -->
+        <section class="grid grid-4">
+          <div class="card kpi">
+            <span class="label">Total</span
+            ><span class="value" id="kpi-total">0</span>
           </div>
-          <div class="stat-card">
-            <div class="stat-icon">📄</div>
-            <div class="stat-number">32</div>
-            <div class="stat-label">Chamados em andamento</div>
+          <div class="card kpi">
+            <span class="label">Abertos</span
+            ><span class="value" id="kpi-aberto">0</span>
           </div>
-          <div class="stat-card">
-            <div class="stat-icon">⚠️</div>
-            <div class="stat-number">15</div>
-            <div class="stat-label">Chamados pendentes</div>
+          <div class="card kpi">
+            <span class="label">Pendentes</span
+            ><span class="value" id="kpi-pendente">0</span>
           </div>
-          <div class="stat-card">
-            <div class="stat-icon">📄</div>
-            <div class="stat-number">15</div>
-            <div class="stat-label">Chamados Aberto</div>
+          <div class="card kpi">
+            <span class="label">Em andamento</span
+            ><span class="value" id="kpi-andamento">0</span>
           </div>
-          <div class="stat-card">
-            <div class="stat-icon">👥</div>
-            <div class="stat-number">6</div>
-            <div class="stat-label">Técnicos ativos</div>
+          <div class="card kpi">
+            <span class="label">Resolvidos</span
+            ><span class="value" id="kpi-resolvido">0</span>
           </div>
-        </div>
+        </section>
 
-        <!-- Conteúdo do Dashboard -->
-        <div class="dashboard-content">
-          <!-- Seção de Gráfico -->
-          <div class="chart-section">
-            <div class="chart-container">
-              <h3>Status dos Chamados</h3>
-              <div class="chart-placeholder">
-                <div class="pie-chart"></div>
-                <div class="chart-legend">
-                  <div class="legend-item">
-                    <span class="legend-color resolved"></span>
-                    <span>Chamados resolvidos</span>
-                  </div>
-                  <div class="legend-item">
-                    <span class="legend-color progress"></span>
-                    <span>Chamados em andamento</span>
-                  </div>
-                  <div class="legend-item">
-                    <span class="legend-color pending"></span>
-                    <span>Chamados pendentes</span>
-                  </div>
-                  <div class="legend-item">
-                    <span class="legend-color open"></span>
-                    <span>Chamados abertos</span>
-                  </div>
-                </div>
-              </div>
+        <!-- Tabela geral (mesmos filtros da página de chamados admin) -->
+        <section class="card mt-24">
+          <h3 class="page-title fs-20 mb-12 text-center">Chamados</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Status</label>
+              <select id="flt-status-admin">
+                <option value="">Todos</option>
+                <option value="aberto">Aberto</option>
+                <option value="pendente">Pendente</option>
+                <option value="andamento">Em andamento</option>
+                <option value="resolvido">Resolvido</option>
+              </select>
             </div>
-
-            <!-- Painel de Filtros -->
-            <div class="filters-panel">
-              <div class="filter-section">
-                <h4>Ano</h4>
-                <div class="year-buttons">
-                  <button class="year-btn">2023</button>
-                  <button class="year-btn active">2024</button>
-                  <button class="year-btn">2025</button>
-                </div>
-              </div>
-
-              <div class="filter-section">
-                <h4>Mês</h4>
-                <select class="filter-select">
-                  <option>Todos</option>
-                  <option>Janeiro</option>
-                  <option>Fevereiro</option>
-                  <option>Março</option>
-                  <option>Abril</option>
-                  <option>Maio</option>
-                </select>
-              </div>
-
-              <div class="filter-section">
-                <h4>Categorias</h4>
-                <div class="category-filters">
-                  <label class="checkbox-label">
-                    <input type="checkbox" checked /> Chamados
-                  </label>
-                  <label class="checkbox-label">
-                    <input type="checkbox" /> Categoria
-                  </label>
-                  <label class="checkbox-label">
-                    <input type="checkbox" /> Departamento
-                  </label>
-                </div>
-              </div>
+            <div class="form-group">
+              <label>Prioridade</label>
+              <select id="flt-prio-admin">
+                <option value="">Todas</option>
+                <option value="alta">Alta</option>
+                <option value="media">Média</option>
+                <option value="baixa">Baixa</option>
+              </select>
             </div>
           </div>
 
-          <!-- Ações Rápidas -->
-          <div class="actions-section">
-            <button
-              class="action-btn primary"
-              onclick="location.href='new-ticket-web.html'"
-            >
-              <span class="btn-icon">+</span> Criar novo chamado
-            </button>
-            <button class="action-btn secondary">
-              <span class="btn-icon">👤</span> Cadastrar novo técnico
-            </button>
-            <button class="action-btn secondary">
-              <span class="btn-icon">☰</span> Gerenciar categorias
-            </button>
-          </div>
-
-          <!-- Últimos Chamados -->
-          <div class="recent-tickets">
-            <h3>Últimos chamados</h3>
-            <table class="tickets-table compact">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>TÍTULO</th>
-                  <th>STATUS</th>
-                  <th>PRIORIDADE</th>
-                  <th>TÉCNICO</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr onclick="goToTicketDetails(1025)">
-                  <td>1025</td>
-                  <td>E-mail</td>
-                  <td><span class="status-badge status-open">Aberto</span></td>
-                  <td><span class="priority-high">Alta</span></td>
-                  <td>Kaiky</td>
-                </tr>
-                <tr onclick="goToTicketDetails(1034)">
-                  <td>1034</td>
-                  <td>Office</td>
-                  <td>
-                    <span class="status-badge status-resolved">Resolvido</span>
-                  </td>
-                  <td><span class="priority-low">Baixa</span></td>
-                  <td>Guilherme</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Título</th>
+                <th>Status</th>
+                <th>Prioridade</th>
+                <th>Categoria</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tickets-body-admin"></tbody>
+          </table>
+        </section>
       </main>
-    </div>
 
+      <footer class="footer">H2O • v1.0.0</footer>
+    </div>
     <script src="script-web.js"></script>
   </body>
 </html>

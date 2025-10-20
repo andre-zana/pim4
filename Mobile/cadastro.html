@@ -3,84 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro - Sistema de Chamados</title>
+    <title>Criar Conta - Sistema</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="mobile-container">
-      <!-- Status Bar -->
+    <main class="mobile-container no-nav" role="main">
       <div class="status-bar">9:41</div>
 
-      <!-- Register Screen -->
-      <div class="register-container">
-        <h2 class="register-title">Cadastro</h2>
-
-        <form id="register-form">
-          <div class="form-group">
-            <input
-              type="text"
-              id="full-name"
-              placeholder="Nome completo"
-              class="form-control"
-              required
-            />
-            <div class="error-message" id="name-error"></div>
-          </div>
-
-          <div class="form-group">
-            <input
-              type="email"
-              id="corp-email"
-              placeholder="E-mail"
-              class="form-control"
-              required
-            />
-            <div class="error-message" id="email-error"></div>
-          </div>
-
-          <!-- <div class="form-group">
-            <select id="department" class="form-control" required>
-              <option value="">Setor ou departamento</option>
-              <option value="ti">TI</option>
-              <option value="rh">RH</option>
-              <option value="financeiro">Financeiro</option>
-              <option value="vendas">Vendas</option>
-              <option value="marketing">Marketing</option>
-            </select>
-            <div class="error-message" id="department-error"></div>
-          </div> -->
-
-          <div class="form-group">
-            <input
-              type="password"
-              id="reg-password"
-              placeholder="Senha"
-              class="form-control"
-              required
-            />
-            <div class="error-message" id="password-error"></div>
-          </div>
-
-          <div class="form-group">
-            <input
-              type="password"
-              id="confirm-password"
-              placeholder="Repetir a senha"
-              class="form-control"
-              required
-            />
-            <div class="error-message" id="confirm-password-error"></div>
-          </div>
-
-          <button type="submit" class="btn-primary">Cadastrar-se</button>
-        </form>
-
-        <div class="register-link mt-20">
-          Já tem uma conta? <a href="login.html">Fazer login</a>
+      <div class="brand-header">
+        <div class="brand-card">
+          <img src="logo.png" alt="H2O Purificadores" class="brand-logo" />
         </div>
       </div>
-    </div>
 
+      <section class="register-container" aria-labelledby="titulo-cadastro">
+        <h1 class="register-title" id="titulo-cadastro">Criar nova conta</h1>
+        <form id="register-form" novalidate>
+          <div class="form-group">
+            <label for="name">Nome completo</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              placeholder="Digite seu nome completo"
+              required
+              autocomplete="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              placeholder="exemplo@email.com"
+              required
+              autocomplete="email"
+            />
+          </div>
+          <div class="form-group password-group">
+            <label for="password">Senha</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                required
+                autocomplete="new-password"
+              />
+              <button
+                type="button"
+                id="togglePassword"
+                class="toggle-btn"
+                aria-label="Mostrar/ocultar senha"
+              >
+                <span class="icon-eye" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+          <div class="form-group password-group">
+            <label for="confirm-password">Confirmar senha</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="confirm-password"
+                class="form-control"
+                required
+                autocomplete="new-password"
+              />
+              <button
+                type="button"
+                id="toggleConfirmPassword"
+                class="toggle-btn"
+                aria-label="Mostrar/ocultar senha"
+              >
+                <span class="icon-eye" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary">Criar conta</button>
+          <div style="margin-top: 12px">
+            Já tem conta? <a href="login.html">Entrar</a>
+          </div>
+        </form>
+      </section>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

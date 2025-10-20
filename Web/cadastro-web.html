@@ -1,83 +1,132 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro - Sistema de Chamados</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Criar Conta — Sistema de Chamados</title>
     <link rel="stylesheet" href="style-web.css" />
   </head>
-  <body class="login-page">
-    <div class="login-container">
-      <!-- Main Content -->
-      <main class="main-content">
-        <div class="register-form-container">
-          <h1 class="register-title">Cadastro</h1>
+  <body>
+    <div class="app">
+      <!-- Topbar: marca (logo centralizada) -->
+      <div class="topbar">
+        <div class="brand"><img src="logo.png" alt="H2O" /></div>
+      </div>
 
-          <form id="register-form" class="register-form">
+      <!-- Header: navegação entre login/cadastro -->
+      <header class="header">
+        <div class="wrap">
+          <div class="brand"><h1 class="text-center">Criar Conta</h1></div>
+          <nav>
+            <a href="login-web.html">Login</a>
+            <a class="active" href="cadastro-web.html">Criar conta</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Conteúdo principal: formulário de cadastro -->
+      <main class="main centered">
+        <div class="auth-box">
+          <div class="auth-title text-center">Nova conta</div>
+
+          <!-- Formulário de cadastro (simulação; API pronta no JS) -->
+          <form id="register-form" novalidate>
             <div class="form-group">
-              <label for="full-name">Nome completo</label>
-              <input type="text" id="full-name" class="form-control" required />
-              <div class="error-message" id="name-error"></div>
+              <label for="r-name">Nome completo</label>
+              <input
+                id="r-name"
+                type="text"
+                placeholder="Seu nome completo"
+                required
+                autocomplete="name"
+              />
             </div>
 
             <div class="form-group">
-              <label for="corp-email">E-mail</label>
+              <label for="r-email">E-mail</label>
               <input
+                id="r-email"
                 type="email"
-                id="corp-email"
-                class="form-control"
+                placeholder="voce@email.com"
                 required
+                autocomplete="email"
               />
-              <div class="error-message" id="email-error"></div>
             </div>
 
-            <!-- <div class="form-group">
-              <label for="department">Setor ou departamento</label>
-              <select id="department" class="form-control" required>
-                <option value="">Selecione...</option>
-                <option value="ti">TI</option>
-                <option value="rh">RH</option>
-                <option value="financeiro">Financeiro</option>
-                <option value="vendas">Vendas</option>
-                <option value="marketing">Marketing</option>
-              </select>
-              <div class="error-message" id="department-error"></div>
-            </div> -->
+            <div class="form-row">
+              <div class="form-group password-group">
+                <label for="r-pass">Senha</label>
+                <div class="password-wrapper">
+                  <input
+                    id="r-pass"
+                    type="password"
+                    placeholder="••••••••"
+                    required
+                    minlength="3"
+                    autocomplete="new-password"
+                  />
+                  <button
+                    type="button"
+                    class="toggle-btn"
+                    data-target="r-pass"
+                    aria-label="Mostrar/ocultar senha"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5c-1.7-4.4-6-7.5-11-7.5zM12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"
+                      />
+                      <circle cx="12" cy="12" r="2.5" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
 
-            <div class="form-group">
-              <label for="reg-password">Senha</label>
-              <input
-                type="password"
-                id="reg-password"
-                class="form-control"
-                required
-              />
-              <div class="error-message" id="password-error"></div>
+              <div class="form-group password-group">
+                <label for="r-pass2">Confirmar senha</label>
+                <div class="password-wrapper">
+                  <input
+                    id="r-pass2"
+                    type="password"
+                    placeholder="Repita a senha"
+                    required
+                    minlength="3"
+                    autocomplete="new-password"
+                  />
+                  <button
+                    type="button"
+                    class="toggle-btn"
+                    data-target="r-pass2"
+                    aria-label="Mostrar/ocultar senha"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5c-1.7-4.4-6-7.5-11-7.5zM12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"
+                      />
+                      <circle cx="12" cy="12" r="2.5" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="confirm-password">Repetir a senha</label>
-              <input
-                type="password"
-                id="confirm-password"
-                class="form-control"
-                required
-              />
-              <div class="error-message" id="confirm-password-error"></div>
+            <div class="actions mt-16">
+              <button class="btn btn-primary" type="submit">Criar conta</button>
+              <a class="btn btn-outline" href="login-web.html"
+                >Voltar ao login</a
+              >
             </div>
 
-            <button type="submit" class="btn-primary" id="register-btn">
-              Cadastrar-se
-            </button>
+            <!-- Nota didática: persistência em localStorage apenas para demo -->
+            <p class="help mt-16 text-center">
+              (Demo) Dados salvos localmente. Na API real, o backend validará as
+              regras.
+            </p>
           </form>
-
-          <div class="register-link">
-            Já tem uma conta? <a href="login-web.html">Fazer login</a>
-          </div>
         </div>
       </main>
-    </div>
 
+      <footer class="footer">H2O • v1.0.0</footer>
+    </div>
     <script src="script-web.js"></script>
   </body>
 </html>

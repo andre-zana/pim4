@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Chamado - Sistema</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="mobile-container" role="main">
+      <div class="status-bar">9:41</div>
+
+      <div class="brand-header">
+        <div class="brand-card">
+          <img src="logo.png" alt="H2O Purificadores" class="brand-logo" />
+        </div>
+      </div>
+
+      <header class="page-header">
+        <button class="btn-back" onclick="goBack()">← Voltar</button>
+        <h1 class="page-title">
+          Chamado <span id="ticket-number">#0000</span>
+        </h1>
+      </header>
+
+      <section class="content-section ticket-summary">
+        <div class="summary-grid">
+          <div class="summary-item">
+            <strong>Status:</strong> <span id="ticket-status">—</span>
+          </div>
+          <div class="summary-item">
+            <strong>Prioridade:</strong> <span id="ticket-priority">—</span>
+          </div>
+          <div class="summary-item">
+            <strong>Categoria:</strong> <span id="ticket-category">—</span>
+          </div>
+        </div>
+
+        <div class="ticket-actions" style="margin-top: 8px">
+          <label for="change-status" class="visually-hidden"
+            >Alterar status</label
+          >
+          <select id="change-status" class="form-control">
+            <option value="">Alterar status...</option>
+            <option value="aberto">Aberto</option>
+            <option value="pendente">Pendente</option>
+            <option value="andamento">Em andamento</option>
+            <option value="resolvido">Resolvido</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="content-section ticket-timeline">
+        <h2 class="section-title">Atividades</h2>
+        <ol id="timeline-list" class="timeline-list"></ol>
+        <div id="timeline-empty" class="empty-message" hidden>
+          🗒️ Ainda não há atividades neste chamado.
+        </div>
+      </section>
+
+      <section class="content-section ticket-comment">
+        <form id="new-comment-form" novalidate>
+          <div class="form-group">
+            <label for="comment-text">Novo comentário</label>
+            <textarea
+              id="comment-text"
+              class="form-control"
+              rows="4"
+              maxlength="1000"
+              placeholder="Descreva o que foi feito..."
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn-primary" id="add-comment-btn">
+            Adicionar comentário
+          </button>
+        </form>
+      </section>
+
+      <nav class="bottom-nav" aria-label="Navegação">
+        <a href="dashboard.html" class="nav-item"
+          ><div class="nav-icon">🏠</div>
+          <div class="nav-label">Início</div></a
+        >
+        <a href="novo-ticket.html" class="nav-item"
+          ><div class="nav-icon">➕</div>
+          <div class="nav-label">Novo</div></a
+        >
+        <a href="config.html" class="nav-item"
+          ><div class="nav-icon">⚙️</div>
+          <div class="nav-label">Config</div></a
+        >
+        <a href="#" id="nav-logout" class="nav-item"
+          ><div class="nav-icon">🚪</div>
+          <div class="nav-label">Sair</div></a
+        >
+      </nav>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

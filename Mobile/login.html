@@ -3,58 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Sistema de Chamados</title>
+    <title>Login - Sistema</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="mobile-container">
-      <!-- Status Bar -->
+    <main class="mobile-container no-nav" role="main">
       <div class="status-bar">9:41</div>
 
-      <!-- Login Screen -->
-      <div class="login-container">
-        <div class="login-icon">👤</div>
-        <div class="login-title">Login</div>
+      <div class="brand-header">
+        <div class="brand-card">
+          <img src="logo.png" alt="H2O Purificadores" class="brand-logo" />
+        </div>
+      </div>
 
-        <form id="login-form">
+      <section class="login-container" aria-labelledby="titulo-login">
+        <h1 class="login-title" id="titulo-login">Entrar no sistema</h1>
+        <form id="login-form" novalidate>
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" class="form-control" required />
-            <div class="error-message" id="email-error"></div>
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              placeholder="exemplo@email.com"
+              autocomplete="username"
+              required
+            />
           </div>
-
-          <div class="form-group">
+          <div class="form-group password-group">
             <label for="password">Senha</label>
-            <div class="password-group">
+            <div class="password-wrapper">
               <input
                 type="password"
                 id="password"
                 class="form-control"
+                placeholder="Digite sua senha"
+                autocomplete="current-password"
                 required
               />
               <button
                 type="button"
-                class="password-toggle"
                 id="password-toggle"
+                class="toggle-btn"
+                aria-label="Mostrar/ocultar senha"
               >
-                👁
+                <span class="icon-eye" aria-hidden="true"></span>
               </button>
             </div>
-            <a href="#" class="forgot-password">Esqueceu a senha</a>
-            <div class="error-message" id="password-error"></div>
+            <a href="#" class="forgot-password">Esqueceu a senha?</a>
           </div>
-
-          <button type="submit" class="btn-primary" id="login-btn">
-            Entrar
-          </button>
+          <button type="submit" class="btn-primary">Entrar</button>
+          <div style="margin-top: 12px">
+            Ainda não tem conta? <a href="cadastro.html">Criar conta agora</a>
+          </div>
         </form>
-
-        <div class="register-link">
-          Ainda não tem conta? <a href="cadastro.html">Criar conta agora</a>
-        </div>
-      </div>
-    </div>
-
+      </section>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

@@ -3,104 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meus Chamados - Sistema de Chamados</title>
+    <title>Meus Chamados - Sistema</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="mobile-container">
-      <!-- Status Bar -->
+    <main class="mobile-container" role="main">
       <div class="status-bar">9:41</div>
 
-      <!-- Content -->
-      <div class="content">
-        <h1 class="page-title">Meus chamados</h1>
-
-        <div class="filters">
-          <div class="filter-row">
-            <select class="filter-select" id="status-filter">
-              <option value="">Filtrar por status</option>
-              <option value="open">Aberto</option>
-              <option value="pendente">Pendente</option>
-              <option value="andamento">Em andamento</option>
-              <option value="resolvido">Resolvido</option>
-            </select>
-            <select class="filter-select" id="priority-filter">
-              <option value="">Filtrar por prioridade</option>
-              <option value="alta">Alta</option>
-              <option value="media">Média</option>
-              <option value="baixa">Baixa</option>
-            </select>
-          </div>
-          <input
-            type="text"
-            placeholder="🔍 Buscar chamados"
-            class="search-input"
-            id="search-input"
-          />
-        </div>
-
-        <div id="tickets-container">
-          <div
-            class="ticket-item"
-            data-id="1234"
-            onclick="goToTicketDetails(1234)"
-          >
-            <div class="ticket-number">1234</div>
-            <div class="ticket-details">
-              <div class="detail-row">
-                <span class="detail-label">Data ABERTURA</span>
-                <span>10/05/2025</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">ASSUNTO</span>
-                <span>Erro ao abrir Excel</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">STATUS</span>
-                <span class="status-badge status-progress">Aberto</span>
-                <span class="status-badge status-progress">Pendente</span>
-                <span class="status-badge status-progress">Em andamento</span>
-                <span class="status-badge status-progress">Resolvido</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">CATEGORIA</span>
-                <span>Software</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">PRIORIDADE</span>
-                <span class="priority-badge">Baixa</span>
-                <span class="priority-badge">Média</span>
-                <span class="priority-badge">Alta</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">RESPONSÁVEL</span>
-                <span>João Pereira</span>
-              </div>
-            </div>
-          </div>
+      <div class="brand-header">
+        <div class="brand-card">
+          <img src="logo.png" alt="H2O Purificadores" class="brand-logo" />
         </div>
       </div>
 
-      <!-- FAB -->
-      <a href="novoticket.html" class="fab">+</a>
+      <header class="page-header">
+        <h1 class="page-title">Meus chamados</h1>
+      </header>
 
-      <!-- Bottom Navigation -->
-      <nav class="bottom-nav">
-        <a href="dashboard.html" class="nav-item active">
-          <div class="nav-icon">🏠</div>
+      <section class="content-section" aria-label="Filtros">
+        <div class="form-group">
+          <label for="status-filter" class="visually-hidden">Status</label>
+          <select id="status-filter" class="form-control">
+            <option value="">Todos os status</option>
+            <option value="aberto">Aberto</option>
+            <option value="pendente">Pendente</option>
+            <option value="andamento">Em andamento</option>
+            <option value="resolvido">Resolvido</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="priority-filter" class="visually-hidden"
+            >Prioridade</label
+          >
+          <select id="priority-filter" class="form-control">
+            <option value="">Todas as prioridades</option>
+            <option value="alta">Alta</option>
+            <option value="media">Média</option>
+            <option value="baixa">Baixa</option>
+          </select>
+        </div>
+        <label for="search-input" class="visually-hidden">Buscar</label>
+        <input
+          id="search-input"
+          class="search-input"
+          type="text"
+          placeholder="🔍 Buscar chamados"
+        />
+      </section>
+
+      <section class="content-section" aria-label="Lista">
+        <div id="tickets-container"></div>
+        <div id="no-tickets" class="empty-message" hidden>
+          📭 Nenhum chamado encontrado
+        </div>
+      </section>
+
+      <nav class="bottom-nav" aria-label="Navegação">
+        <a href="dashboard.html" class="nav-item active" aria-current="page">
+          <div class="nav-icon" aria-hidden="true">🏠</div>
           <div class="nav-label">Início</div>
         </a>
-        <a href="config.html" class="nav-item">
-          <div class="nav-icon">⚙️</div>
-          <div class="nav-label">Config</div>
-        </a>
-        <a href="login.html" class="nav-item">
-          <div class="nav-icon">↗️</div>
-          <div class="nav-label">Sair</div>
-        </a>
+        <a href="novo-ticket.html" class="nav-item"
+          ><div class="nav-icon" aria-hidden="true">➕</div>
+          <div class="nav-label">Novo</div></a
+        >
+        <a href="config.html" class="nav-item"
+          ><div class="nav-icon" aria-hidden="true">⚙️</div>
+          <div class="nav-label">Config</div></a
+        >
+        <a href="#" id="nav-logout" class="nav-item"
+          ><div class="nav-icon" aria-hidden="true">🚪</div>
+          <div class="nav-label">Sair</div></a
+        >
       </nav>
-    </div>
-
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

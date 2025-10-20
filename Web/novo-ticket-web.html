@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Novo Chamado — Web</title>
+    <link rel="stylesheet" href="style-web.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Topbar: marca (logo centralizada) -->
+      <div class="topbar">
+        <div class="brand"><img src="logo.png" alt="H2O" /></div>
+      </div>
+
+      <!-- Header: navegação principal do usuário -->
+      <header class="header">
+        <div class="wrap">
+          <nav>
+            <a href="user-dashboard-web.html">Início</a>
+            <a class="active" href="novo-ticket-web.html">Novo</a>
+            <a href="config-web.html">Config</a>
+            <a href="#" id="nav-logout">Sair</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Conteúdo: formulário de criação de chamado -->
+      <main class="main">
+        <h2 class="page-title text-center">Abrir novo chamado</h2>
+
+        <!-- Formulário com validação básica; backend fará validações finais -->
+        <form id="new-ticket-form" class="card">
+          <div class="form-group">
+            <label for="title">Título</label>
+            <input
+              id="title"
+              maxlength="120"
+              placeholder="Ex.: Computador não liga"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="category">Categoria</label>
+              <select id="category" required>
+                <option value="">Selecione...</option>
+                <option value="hardware">Hardware</option>
+                <option value="software">Software</option>
+                <option value="rede">Rede</option>
+                <option value="acesso">Acesso/Senha</option>
+                <option value="outros">Outros</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="priority">Prioridade</label>
+              <select id="priority" required>
+                <option value="">Selecione...</option>
+                <option value="alta">Alta</option>
+                <option value="media">Média</option>
+                <option value="baixa">Baixa</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Descrição</label>
+            <textarea
+              id="description"
+              rows="6"
+              maxlength="1000"
+              placeholder="Descreva o problema..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">
+              Enviar chamado
+            </button>
+            <a class="btn btn-outline" href="user-dashboard-web.html"
+              >Cancelar</a
+            >
+          </div>
+        </form>
+      </main>
+
+      <footer class="footer">H2O • v1.0.0</footer>
+    </div>
+    <script src="script-web.js"></script>
+  </body>
+</html>
