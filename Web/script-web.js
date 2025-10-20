@@ -73,6 +73,9 @@ const API_BASE = "https://api.h2opurificadores.com";
 function go(url) {
   window.location.href = url;
 }
+function goBack() {
+  window.history.back();
+}
 function logout() {
   localStorage.removeItem("user");
   go("login-web.html");
@@ -90,9 +93,6 @@ function initLogin() {
     const email = $("#email").value.trim().toLowerCase();
     const password = $("#password").value.trim();
     if (!email || !password) return toast("Preencha e-mail e senha.");
-
-    // Ponto de integração: autenticação real
-    // fetch(`${API_BASE}/auth/login`, { ... })
 
     // Simulação local (demo acadêmica)
     const users = load("users");
@@ -125,10 +125,6 @@ function initRegister() {
       return toast("Preencha todos os campos.");
     if (pass !== pass2) return toast("As senhas não coincidem.");
 
-    // Ponto de integração: criação real de usuário
-    // fetch(`${API_BASE}/users/register`, { ... })
-
-    // Simulação local
     const users = load("users");
     if (users.some((u) => u.email === email))
       return toast("E-mail já cadastrado.");
@@ -174,7 +170,7 @@ function initUserDashboard() {
   });
 }
 
-/* Tabela de chamados (compartilhada entre páginas) */
+/* ---------- Tabela de chamados (reutilizável) ---------- */
 function renderTicketsTable(arr, tbody) {
   tbody.innerHTML = "";
   if (!arr.length) {
@@ -221,9 +217,9 @@ const prioClass = (p) =>
     baixa: "prio-baixa",
   }[p] || "prio-media");
 
-/* ==========================================
-   NOVO CHAMADO — cria no localStorage (demo)
-   ========================================== */
+/* ==================================================
+   NOVO CHAMADO — simulação de criação local
+   ================================================== */
 function initNewTicket() {
   const form = $("#new-ticket-form");
   if (!form) return;
@@ -251,9 +247,6 @@ function initNewTicket() {
       comments: [],
     };
 
-    // Ponto de integração: POST /tickets
-    // fetch(`${API_BASE}/tickets`, { ... })
-
     const all = load("tickets");
     all.push(newTicket);
     save("tickets", all);
@@ -262,9 +255,9 @@ function initNewTicket() {
   });
 }
 
-/* ==================================================================
-   DETALHES DO CHAMADO — resumo, descrição, status, comentários (demo)
-   ================================================================== */
+/* ==============================================================
+   DETALHES DO CHAMADO — inclui botão de voltar (NOVO)
+   ============================================================== */
 function initTicketDetails() {
   const wrap = $("#ticket-view");
   if (!wrap) return;
@@ -289,18 +282,7 @@ function initTicketDetails() {
 
   renderComments(t, $("#comments"));
 
-  // Alterar status (simulação local)
-  $("#change-status")?.addEventListener("change", (e) => {
-    const v = e.target.value;
-    if (!v) return;
-    t.status = v;
-    $("#t-status").innerHTML = `<span class="badge ${statusClass(t.status)}">${
-      t.status
-    }</span>`;
-    persistTicket(t);
-  });
-
-  // Novo comentário (simulação local)
+  // Novo comentário (simulação)
   $("#comment-form")?.addEventListener("submit", (e) => {
     e.preventDefault();
     const txt = $("#comment-text").value.trim();
@@ -315,10 +297,13 @@ function initTicketDetails() {
     persistTicket(t);
   });
 
+  // 🔙 Botão de voltar
+  $("#btn-voltar")?.addEventListener("click", () => goBack());
+
   setupNavLogout();
 }
 
-/* Lista de comentários (itens de atividade) */
+/* Render de comentários */
 function renderComments(t, list) {
   list.innerHTML = "";
   if (!t.comments?.length) {
@@ -335,7 +320,7 @@ function renderComments(t, list) {
   });
 }
 
-/* Atualiza o ticket no storage local (simulação) */
+/* Atualiza o ticket localmente */
 function persistTicket(t) {
   const all = load("tickets");
   const i = all.findIndex((x) => x.id === t.id);
@@ -345,7 +330,7 @@ function persistTicket(t) {
 }
 
 /* ===========================================
-   CONFIGURAÇÕES — sair da conta (e futuros)
+   CONFIGURAÇÕES — logout (e futuros ajustes)
    =========================================== */
 function initConfig() {
   const btn = $("#logout-btn");
@@ -357,7 +342,7 @@ function initConfig() {
 }
 
 /* =========================================
-   ADMIN — visão geral e listagem (simulação)
+   ADMIN — visão geral e listagem
    ========================================= */
 function initAdmin() {
   const tbody = $("#tickets-body-admin");
@@ -366,7 +351,6 @@ function initAdmin() {
   const all = load("tickets");
   renderTicketsTable(all, tbody);
 
-  // KPIs (se existirem na página)
   const k = {
     total: all.length,
     aberto: all.filter((t) => t.status === "aberto").length,
@@ -383,9 +367,9 @@ function initAdmin() {
   setupNavLogout();
 }
 
-/* -------------------------------------------
-   Sair pelo menu principal (link "Sair")
--------------------------------------------- */
+/* =========================================
+   Menu principal: sair
+   ========================================= */
 function setupNavLogout() {
   $("#nav-logout")?.addEventListener("click", (e) => {
     e.preventDefault();
@@ -394,7 +378,7 @@ function setupNavLogout() {
 }
 
 /* -------------------------------------------
-   Mostrar/ocultar senha (acessível + visual)
+   Mostrar/ocultar senha
 -------------------------------------------- */
 function initPasswordToggles() {
   document.querySelectorAll(".toggle-btn").forEach((btn) => {
@@ -412,7 +396,7 @@ function initPasswordToggles() {
   });
 }
 
-/* ---------- Inicialização global (auto) ---------- */
+/* ---------- Inicialização global ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   initLogin();
   initRegister();
