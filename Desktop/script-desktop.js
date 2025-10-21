@@ -332,11 +332,23 @@ function initPasswordToggles() {
    🚀 INICIALIZAÇÃO GLOBAL
    =========================================================== */
 document.addEventListener("DOMContentLoaded", () => {
-  initLogin();
-  initRegister();
-  initDashboard();
-  initNewTicket();
-  initTicketDetails();
-  initConfig();
-  initPasswordToggles();
+  const path = window.location.pathname;
+
+  if (path.endsWith("login-desktop.html")) {
+    initLogin();
+    initPasswordToggles();
+  } else if (
+    path.endsWith("admin-dashboard-desktop.html") ||
+    path.endsWith("dashboard-desktop.html")
+  ) {
+    initDashboard();
+    initConfig();
+  } else if (path.endsWith("register-desktop.html")) {
+    initRegister();
+  } else if (path.endsWith("new-ticket-desktop.html")) {
+    initNewTicket();
+  } else if (path.endsWith("ticket-detalhes-desktop.html")) {
+    initTicketDetails();
+  }
 });
+
